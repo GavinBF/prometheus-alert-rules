@@ -1,11 +1,10 @@
 groups:
 - name: test-rule
   rules:
-  - alert: NodeCPU_USAGE_IDLE
-    expr: cpu_usage_idle  > 50
-    for: 2s
+  - alert: Mysql Uptime
+    expr: mysql_global_status_uptime < 3600
     labels:
       team: node
     annotations:
-      summary: "{{$labels.instance}}: High CPU USAGE IDLE detected"
-      description: "{{$labels.instance}}: High CPU USAGE IDLE 50% (current value is: {{ $value }}"
+      summary: "{{$labels.instance}}: mysql went down"
+      description: "{{$labels.instance}}: mysql went down {{ $value }} ago"
