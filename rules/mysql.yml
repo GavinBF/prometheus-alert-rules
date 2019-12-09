@@ -1,10 +1,10 @@
 groups:
 - name: mysql-rule
   rules:
-  - alert: Mysql Master Switched
-    expr: count(mysql_slave_status_master_server_id{instance="mysqlexporter-1-node.mysql-new-test-1.autoip.dcos.thisdcos.directory:9104"}) != 1 
+  - alert: Mysql Instance Stopped 
+    expr: count(mysql_up{instance="mysqlexporter-0-node.mysql-new-test-1.autoip.dcos.thisdcos.directory:9104"}) != 1 
     labels:
       team: node
     annotations:
-      summary: "{{$labels.instance}}: mysql master got swithed"
-      description: "{{$labels.instance}}: mysql master swithced to {{ $value }}"
+      summary: "{{$labels.instance}}: mysql instance stopped"
+      description: "{{$labels.instance}}: mysql instance 0 stopped {{ $value }}"
