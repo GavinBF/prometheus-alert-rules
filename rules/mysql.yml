@@ -2,7 +2,7 @@ groups:
 - name: mysql-rule
   rules:
   - alert: Mysql Instance Stopped 
-    expr: count(mysql_up{instance="mysqlexporter-0-node.mysql-new-test-1.autoip.dcos.thisdcos.directory:9104"}) != 1 
+    expr: mysql_up{instance="mysqlexporter-0-node.mysql-new-test-1.autoip.dcos.thisdcos.directory:9104"} == 0 
     labels:
       team: node
     annotations:
