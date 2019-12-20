@@ -2,9 +2,68 @@ groups:
 - name: mysql-rule
   rules:
   - alert: Mysql Instance Stopped 
-    expr: mysql_up{instance="mysqlexporter-0-node.mysql-new-test-1.autoip.dcos.thisdcos.directory:9104"} == 0 
+    expr: mysql_up{instance="master.my-13306.l4lb.thisdcos.directory:13306"} == 0 
     labels:
-      team: node
+      severity: warning
     annotations:
       summary: "{{$labels.instance}}: mysql instance stopped"
-      description: "{{$labels.instance}}: mysql instance 0 stopped {{ $value }}"
+      description: "{{$labels.instance}}: mysql master instance 0 stopped {{ $value }}"
+  - alert: Mysql Instance Stopped 
+    expr: mysql_up{instance="master.my-13307.l4lb.thisdcos.directory:13306"} == 0 
+    labels:
+      severity: warning
+    annotations:
+      summary: "{{$labels.instance}}: mysql instance stopped"
+      description: "{{$labels.instance}}: mysql master instance 0 stopped {{ $value }}"
+  - alert: Mysql Instance Stopped 
+    expr: mysql_up{instance="master.my-13308.l4lb.thisdcos.directory:13306"} == 0 
+    labels:
+      severity: warning
+    annotations:
+      summary: "{{$labels.instance}}: mysql instance stopped"
+      description: "{{$labels.instance}}: mysql master instance 0 stopped {{ $value }}"
+  - alert: Mysql Instance Stopped 
+    expr: mysql_up{instance="master.my-13309.l4lb.thisdcos.directory:13306"} == 0 
+    labels:
+      severity: warning
+    annotations:
+      summary: "{{$labels.instance}}: mysql instance stopped"
+      description: "{{$labels.instance}}: mysql master instance 0 stopped {{ $value }}"
+  - alert: Mysql Instance Stopped 
+    expr: mysql_up{instance="master.my-13316.l4lb.thisdcos.directory:13306"} == 0 
+    labels:
+      severity: warning
+    annotations:
+      summary: "{{$labels.instance}}: mysql instance stopped"
+      description: "{{$labels.instance}}: mysql master instance 0 stopped {{ $value }}"
+  - alert: Mysql Instance Stopped 
+    expr: mysql_up{instance="master.my-15001.l4lb.thisdcos.directory:13306"} == 0 
+    labels:
+      severity: warning
+    annotations:
+      summary: "{{$labels.instance}}: mysql instance stopped"
+      description: "{{$labels.instance}}: mysql master instance 0 stopped {{ $value }}"
+  - alert: Mysql_Too_Many_Slow_Query
+    expr: rate(mysql_global_status_slow_queries[20m]) > 3
+    for: 2m
+    labels:
+      severity: warning
+    annotations:
+      summary: "{{$labels.instance}}: Mysql_Too_Many_Slow_Query detected"
+      description: "{{$labels.instance}}: Mysql current Slow_Query Sql is more than 3 ,(current value is: {{ $value }})"
+  - alert: Mysql_Too_Many_Connections
+    expr: rate(mysql_global_status_connections[5m]) > 2000
+    for: 2m
+    labels:
+      severity: warning
+    annotations:
+      summary: "{{$labels.instance}}: Mysql Too Many Connections detected"
+      description: "{{$labels.instance}}: Mysql Connections is more than 1000 per second ,(current value is: {{ $value }})"  
+  - alert: Mysql_High_QPS
+    expr: rate(mysql_global_status_questions[5m]) > 500 
+    for: 2m
+    labels:
+      severity: warning
+    annotations:
+      summary: "{{$labels.instance}}: Mysql_High_QPS detected"
+      description: "{{$labels.instance}}: Mysql opreation is more than 500 per second ,(current value is: {{ $value }})"  
