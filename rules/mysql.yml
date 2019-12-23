@@ -2,42 +2,42 @@ groups:
 - name: mysql-rule
   rules:
   - alert: Mysql Instance Stopped 
-    expr: mysql_up{instance="master.my-13306.l4lb.thisdcos.directory:13306"} == 0 
+    expr: mysql_up{instance="my-13306-exporter.marathon.l4lb.thisdcos.directory:9104",job="my-13306-prod"} == 0 
     labels:
       severity: warning
     annotations:
       summary: "{{$labels.instance}}: mysql instance stopped"
       description: "{{$labels.instance}}: mysql master instance 0 stopped {{ $value }}"
   - alert: Mysql Instance Stopped 
-    expr: mysql_up{instance="master.my-13307.l4lb.thisdcos.directory:13306"} == 0 
+    expr: mysql_up{instance="my-13307-exporter.marathon.l4lb.thisdcos.directory:9104",job="my-13307-prod"} == 0 
     labels:
       severity: warning
     annotations:
       summary: "{{$labels.instance}}: mysql instance stopped"
       description: "{{$labels.instance}}: mysql master instance 0 stopped {{ $value }}"
   - alert: Mysql Instance Stopped 
-    expr: mysql_up{instance="master.my-13308.l4lb.thisdcos.directory:13306"} == 0 
+    expr: mysql_up{instance="my-13308-exporter.marathon.l4lb.thisdcos.directory:9104",job="my-13308-prod"} == 0 
     labels:
       severity: warning
     annotations:
       summary: "{{$labels.instance}}: mysql instance stopped"
       description: "{{$labels.instance}}: mysql master instance 0 stopped {{ $value }}"
   - alert: Mysql Instance Stopped 
-    expr: mysql_up{instance="master.my-13309.l4lb.thisdcos.directory:13306"} == 0 
+    expr: mysql_up{instance="my-13309-exporter.marathon.l4lb.thisdcos.directory:9104",job="my-13309-prod"} == 0 
     labels:
       severity: warning
     annotations:
       summary: "{{$labels.instance}}: mysql instance stopped"
       description: "{{$labels.instance}}: mysql master instance 0 stopped {{ $value }}"
   - alert: Mysql Instance Stopped 
-    expr: mysql_up{instance="master.my-13316.l4lb.thisdcos.directory:13306"} == 0 
+    expr: mysql_up{instance="my-13316-exporter.marathon.l4lb.thisdcos.directory:9104",job="my-13316-prod"} == 0 
     labels:
       severity: warning
     annotations:
       summary: "{{$labels.instance}}: mysql instance stopped"
       description: "{{$labels.instance}}: mysql master instance 0 stopped {{ $value }}"
   - alert: Mysql Instance Stopped 
-    expr: mysql_up{instance="master.my-15001.l4lb.thisdcos.directory:13306"} == 0 
+    expr: mysql_up{instance="my-15001-exporter.marathon.l4lb.thisdcos.directory:9104",job="my-15001-prod-test"} == 0 
     labels:
       severity: warning
     annotations:
